@@ -7,7 +7,7 @@ from telebot.types import (
 )
 import telebot
 
-bot = telebot.TeleBot("7870584540:AAG8isfT89Vi3RXVKFuZcH_gXk6Wm6pl5Go")
+bot = telebot.TeleBot("7870584540:")
 
 # -------------------------------
 # Команда /start
