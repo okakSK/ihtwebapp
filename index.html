@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>IHT Gallery</title>
+</head>
+<body>
+  <header class="ihtheader">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-3 col-12 mb-3 mb-md-0">
+          <div class="logo">
+            <img src="logo/OIP-Photoroom.png" alt="IHT Gallery Logo" style="max-width: 120px;">
+          </div>
+        </div>
+        <div class="col-md-5 col-12 text-center mb-3 mb-md-0">
+          <h1>IHT Gallery</h1>
+          <p>This gallery showcases all students who have learned here.</p>
+        </div>
+        <div class="col-md-2 col-6 text-md-end text-center mb-3 mb-md-0">
+          <div class="authors">
+            <strong>Authors:</strong> Samir Khamzin, Urinboev Komron
+          </div>
+        </div>
+        <div class="col-md-2 col-6 text-md-end text-center">
+          <div class="login">
+            <a href="login.html" class="btn btn-primary">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="gallery-section py-5">
+    <div class="container">
+      <div class="row gallery-row">
+        <!-- Gallery Item 1 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/aircraft.jpg" alt="Student 1" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/ads.jpg" alt="Student 2" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 3 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/aircraft.jpg" alt="Student 3" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 4 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/patrick.jpg" alt="Student 4" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 5 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/aircraft.jpg" alt="Student 5" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 6 -->
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="gallery-item">
+            <img src="images/nft.png" alt="Student 6" class="gallery-img">
+            <div class="gallery-info">
+              <h3 class="gallery-title">Student Name</h3>
+              <p class="gallery-desc">Brief description about the student or their work.</p>
+              <span class="gallery-year">2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="ihtfooter">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 text-center">
+          <p>&copy; 2025 IHT Gallery. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox-контейнер -->
+  <div id="lightbox" class="lightbox">
+    <button id="lightbox-close" class="lightbox-control close">×</button>
+    <button id="lightbox-prev"  class="lightbox-control nav prev">‹</button>
+    <img    id="lightbox-img"   class="lightbox-image" alt="Expanded image">
+    <button id="lightbox-next"  class="lightbox-control nav next">›</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const images    = Array.from(document.querySelectorAll('.gallery-img'));
+      const lightbox  = document.getElementById('lightbox');
+      const lbImg     = document.getElementById('lightbox-img');
+      const btnClose  = document.getElementById('lightbox-close');
+      const btnPrev   = document.getElementById('lightbox-prev');
+      const btnNext   = document.getElementById('lightbox-next');
+      let currentIndex = 0;
+
+      images.forEach((img, idx) => {
+        img.addEventListener('click', () => {
+          currentIndex = idx;
+          lbImg.src    = img.src;
+          lbImg.alt    = img.alt;
+          lightbox.style.display = 'flex';
+        });
+      });
+
+      function showImage(index) {
+        const img = images[index];
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+      }
+
+      btnClose.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+      });
+
+      btnPrev.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+
+      btnNext.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) {
+          lightbox.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
